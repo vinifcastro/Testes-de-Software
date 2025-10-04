@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+      <h1 class="h4 m-0">Usuários cadastrados</h1>
+      <form class="d-flex" method="get" action="{{ url_for('list_users') }}">
+        <input type="text" name="q" class="form-control me-2" placeholder="Buscar por nome, email ou CPF…" value="{{ q }}">
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      </form>
+    </div>
+
+    <p class="text-muted mb-2">{{ total }} resultado(s){% if q %} para <strong>"{{ q }}"</strong>{% endif %}</p>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+            <th>Nascimento</th>
+            <th>Telefone</th>
+            <th>CEP</th>
+            <th>Renda</th>
+            <th>Criado em</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in users %}
+          <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.nome }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.cpf | mask_cpf }}</td>
+            <td>{{ u.data_nascimento }}</td>
+            <td>{{ (u.telefone or '') | mask_tel }}</td>
+            <td>{{ u.cep }}</td>
+            <td>{{ u.renda_mensal | fmt_money }}</td>
+            <td>{{ u.created_at | fmt_date }}</td>
+          </tr>
+          {% else %}
+          <tr><td colspan="9" class="text-center text-muted py-4">Nenhum usuário encontrado.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginação simples -->
+    <nav aria-label="Paginação">
+      <ul class="pagination justify-content-end">
+        <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+          <a class="page-link" href="{{ url_for('list_users', q=q, page=page-1) }}">Anterior</a>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">Página {{ page }} de {{ pages }}</span>
+        </li>
+        <li class="page-item {% if page >= pages %}disabled{% endif %}">
+          <a class="page-link" href="{{ url_for('list_users', q=q, page=page+1) }}">Próxima</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</div>
+{% endblock %}

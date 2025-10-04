@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="alert alert-success">
+  <h2 class="h5">Cadastro realizado com sucesso!</h2>
+  <p>O usuário foi criado e armazenado no banco de dados.</p>
+  <a class="btn btn-primary" href="{{ url_for('register_form') }}">Novo cadastro</a>
+</div>
+{% endblock %}

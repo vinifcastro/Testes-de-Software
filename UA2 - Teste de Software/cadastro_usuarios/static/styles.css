@@ -1,0 +1,180 @@
+/* static/styles.css
+   Ajustes leves para complementar o Bootstrap no app de Cadastro de Usuários
+   Você pode alterar as variáveis para customizar rapidamente o tema.  */
+
+:root {
+  --brand: #0d6efd;          /* Azul primário Bootstrap */
+  --brand-dark: #0a58ca;
+  --bg-soft: #f8fafc;        /* Fundo suave */
+  --card-shadow: 0 8px 24px rgba(0,0,0,.08);
+  --radius: 14px;            /* Cantos arredondados padrão */
+}
+
+/* Body e layout geral */
+body {
+  background: var(--bg-soft);
+}
+
+/* Navbar */
+.navbar {
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+/* Cards */
+.card {
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.card .card-body {
+  padding: 1.25rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .card .card-body {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Formulários */
+.form-label {
+  font-weight: 600;
+  margin-bottom: .35rem;
+}
+
+.form-control,
+.form-check-input {
+  border-radius: 10px;
+}
+
+.form-control:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 .2rem rgba(13,110,253,.15);
+}
+
+/* Help text menor */
+.form-text {
+  color: #64748b;
+  font-size: .85rem;
+}
+
+/* Estados de erro/sucesso (quando quiser marcar manualmente) */
+.is-valid {
+  border-color: #198754 !important;
+}
+
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+/* Alerts (mensagens flash) */
+.alert {
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+/* Botões */
+.btn {
+  border-radius: 12px;
+  padding: .6rem 1rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+/* Tabela de testes */
+.table-tests {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.table-tests th,
+.table-tests td {
+  padding: .75rem;
+  vertical-align: top;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.table-tests thead th {
+  background: #e9f1ff;
+  font-weight: 700;
+}
+
+.table-tests tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Badges de Status */
+.badge-status {
+  display: inline-block;
+  padding: .4rem .6rem;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.badge-ok {
+  background: #e9f8f1;
+  color: #157347;
+  border: 1px solid #b8e3cd;
+}
+
+.badge-erro {
+  background: #fff1f2;
+  color: #b02a37;
+  border: 1px solid #f5c2c7;
+}
+
+/* Espaços utilitários */
+.mt-4 { margin-top: 1.5rem !important; }
+.gap-2 { gap: .5rem !important; }
+
+/* Tipografia */
+h1, .h1, h2, .h2, h3, .h3 {
+  letter-spacing: .2px;
+}
+
+/* Acessibilidade: foco visível em links */
+a:focus {
+  outline: 3px solid rgba(13,110,253,.35);
+  outline-offset: 2px;
+}
+
+/* Página de sucesso */
+.alert-success h2 {
+  margin-bottom: .5rem;
+}
+
+/* Checkbox maior */
+.form-check-input {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* Placeholder mais visível */
+::placeholder {
+  color: #94a3b8;
+}
+
+/* Suaviza rolagem */
+html {
+  scroll-behavior: smooth;
+}

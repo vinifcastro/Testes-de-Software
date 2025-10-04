@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h1 class="h4 mb-3">Criar conta</h1>
+
+    <form method="post" action="{{ url_for('register_submit') }}" novalidate>
+      <div class="row g-3">
+
+        <!-- NOME -->
+        <div class="col-md-6">
+          <label class="form-label" for="nome">Nome *</label>
+          <input id="nome" name="nome"
+                 class="form-control {{ 'is-invalid' if errors.get('nome') }}"
+                 required
+                 value="{{ form.get('nome','') }}">
+          <div class="form-text">3–80 caracteres, apenas letras e espaços.</div>
+          {% if errors.get('nome') %}
+            <div class="invalid-feedback">{{ errors.get('nome') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- EMAIL -->
+        <div class="col-md-6">
+          <label class="form-label" for="email">Email *</label>
+          <input id="email" name="email" type="email"
+                 class="form-control {{ 'is-invalid' if errors.get('email') }}"
+                 required
+                 value="{{ form.get('email','') }}">
+          {% if errors.get('email') %}
+            <div class="invalid-feedback">{{ errors.get('email') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- SENHA -->
+        <div class="col-md-6">
+          <label class="form-label" for="senha">Senha *</label>
+          <input id="senha" name="senha" type="password"
+                 class="form-control {{ 'is-invalid' if errors.get('senha') }}"
+                 required>
+          <div class="form-text">8–32 chars; deve conter letras e números.</div>
+          {% if errors.get('senha') %}
+            <div class="invalid-feedback">{{ errors.get('senha') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- CONFIRMAR SENHA -->
+        <div class="col-md-6">
+          <label class="form-label" for="confirmar_senha">Confirmar Senha *</label>
+          <input id="confirmar_senha" name="confirmar_senha" type="password"
+                 class="form-control {{ 'is-invalid' if errors.get('confirmar_senha') }}"
+                 required>
+          {% if errors.get('confirmar_senha') %}
+            <div class="invalid-feedback">{{ errors.get('confirmar_senha') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- CPF -->
+        <div class="col-md-4">
+          <label class="form-label" for="cpf">CPF *</label>
+          <input id="cpf" name="cpf"
+                 class="form-control {{ 'is-invalid' if errors.get('cpf') }}"
+                 placeholder="000.000.000-00" required
+                 value="{{ form.get('cpf','') }}">
+          {% if errors.get('cpf') %}
+            <div class="invalid-feedback">{{ errors.get('cpf') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- DATA NASCIMENTO -->
+        <div class="col-md-4">
+          <label class="form-label" for="data_nascimento">Data de Nascimento (YYYY-MM-DD) *</label>
+          <input id="data_nascimento" name="data_nascimento"
+                 class="form-control {{ 'is-invalid' if errors.get('data_nascimento') }}"
+                 placeholder="1990-01-01" required
+                 value="{{ form.get('data_nascimento','') }}">
+          {% if errors.get('data_nascimento') %}
+            <div class="invalid-feedback">{{ errors.get('data_nascimento') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- TELEFONE (opcional) -->
+        <div class="col-md-4">
+          <label class="form-label" for="telefone">Telefone (opcional)</label>
+          <input id="telefone" name="telefone"
+                 class="form-control {{ 'is-invalid' if errors.get('telefone') }}"
+                 placeholder="DDD+número"
+                 value="{{ form.get('telefone','') }}">
+          <div class="form-text">Apenas números; 10–11 dígitos.</div>
+          {% if errors.get('telefone') %}
+            <div class="invalid-feedback">{{ errors.get('telefone') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- CEP -->
+        <div class="col-md-4">
+          <label class="form-label" for="cep">CEP *</label>
+          <input id="cep" name="cep"
+                 class="form-control {{ 'is-invalid' if errors.get('cep') }}"
+                 placeholder="00000-000" required
+                 value="{{ form.get('cep','') }}">
+          {% if errors.get('cep') %}
+            <div class="invalid-feedback">{{ errors.get('cep') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- RENDA -->
+        <div class="col-md-4">
+          <label class="form-label" for="renda_mensal">Renda Mensal (R$) *</label>
+          <input id="renda_mensal" name="renda_mensal"
+                 class="form-control {{ 'is-invalid' if errors.get('renda_mensal') }}"
+                 placeholder="2500.00" required
+                 value="{{ form.get('renda_mensal','') }}">
+          <div class="form-text">Use ponto como separador decimal. Ex.: 1234.56</div>
+          {% if errors.get('renda_mensal') %}
+            <div class="invalid-feedback">{{ errors.get('renda_mensal') }}</div>
+          {% endif %}
+        </div>
+
+        <!-- ACEITE TERMOS -->
+        <div class="col-12">
+          <div class="form-check">
+            <input id="termos" name="aceite_termos" type="checkbox"
+                   class="form-check-input {{ 'is-invalid' if errors.get('aceite_termos') }}"
+                   {{ 'checked' if form.get('aceite_termos') else '' }}>
+            <label class="form-check-label" for="termos">Aceito os termos *</label>
+            {% if errors.get('aceite_termos') %}
+              <div class="invalid-feedback" style="display:block">{{ errors.get('aceite_termos') }}</div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-4 d-flex gap-2">
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+        <button class="btn btn-outline-secondary" type="reset">Limpar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
