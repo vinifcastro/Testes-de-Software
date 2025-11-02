@@ -99,7 +99,3 @@ Formato: **CT – Elemento (DU) – Entrada – Esperado – Caminho – Resulta
 - **DUs mapeados:** 17
 - **Cobertos:** 17
 - **Cobertura:** **100%**
-
-## 5) Observações
-- O mapeamento DU foi definido para fins didáticos e corresponde aos pontos críticos do fluxo de dados do programa.
-- Em contexto industrial, recomenda-se instrumentação e/ou ferramentas para validar dinamicamente a cobertura de DUs.
