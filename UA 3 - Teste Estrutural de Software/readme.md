@@ -99,3 +99,6 @@ Formato: **CT – Elemento (DU) – Entrada – Esperado – Caminho – Resulta
 - **DUs mapeados:** 17
 - **Cobertos:** 17
 - **Cobertura:** **100%**
+---
+
+📎 **Notebook disponível em:** [Repositório GitHub - UA 3 Teste Estrutural de Software](https://github.com/vinifcastro/Testes-de-Software/tree/main/UA%203%20-%20Teste%20Estrutural%20de%20Software)
